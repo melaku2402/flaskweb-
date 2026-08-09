@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TastyBite - Ethiopian Food Menu</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- notification box, hidden until an item is added -->
+  <div id="notification" class="notification">Item Added Successfully</div>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <h1>TastyBite</h1>
+        <p>Ethiopian Food, Made with Love</p>
+      </div>
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+      </nav>
+      <span class="cart-icon" id="cartIcon">🛒<span class="cart-count" id="cartCount">0</span></span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Authentic Ethiopian Food, Made with Love</h2>
+        <p>Enjoy traditional flavors made from fresh ingredients and time-honored recipes.</p>
+        <a href="#menu" class="btn">View Menu</a>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Popular Dishes / Menu Section -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <h2 class="menu-title">Popular Dishes</h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}doro.jpg" alt="Doro Wat">
+          <div class="card-body">
+            <h3 class="food-name">Doro Wat</h3>
+            <p class="food-desc">Spicy chicken stew cooked in berbere sauce and butter.</p>
+            <p class="food-price">120 birr</p>
+            <button class="add-btn" data-name="Doro Wat" data-price="120">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}shiro.jpg" alt="Shiro Wat">
+          <div class="card-body">
+            <h3 class="food-name">Shiro Wat</h3>
+            <p class="food-desc">Chickpea stew simmered with spices and berbere.</p>
+            <p class="food-price">100 birr</p>
+            <button class="add-btn" data-name="Shiro Wat" data-price="100">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}kitfo.jpg" alt="Kitfo">
+          <div class="card-body">
+            <h3 class="food-name">Kitfo</h3>
+            <p class="food-desc">Minced raw beef seasoned with mitmita and spices.</p>
+            <p class="food-price">150 birr</p>
+            <button class="add-btn" data-name="Kitfo" data-price="150">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}tibs.jpg" alt="Tibs">
+          <div class="card-body">
+            <h3 class="food-name">Tibs</h3>
+            <p class="food-desc">Stir-fried beef with onions, peppers and spices.</p>
+            <p class="food-price">230 birr</p>
+            <button class="add-btn" data-name="Tibs" data-price="230">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
+          <div class="card-body">
+            <h3 class="food-name">Veggie Combo</h3>
+            <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
+            <p class="food-price">90 birr</p>
+            <button class="add-btn" data-name="Veggie Combo" data-price="90">Add to Order</button>
+          </div>
+        </div>
+   <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}shiro.jpg" alt="Shiro Wat">
+          <div class="card-body">
+            <h3 class="food-name">Shiro Wat</h3>
+            <p class="food-desc">Chickpea stew simmered with spices and berbere.</p>
+            <p class="food-price">100 birr</p>
+            <button class="add-btn" data-name="Shiro Wat" data-price="100">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}kitfo.jpg" alt="Kitfo">
+          <div class="card-body">
+            <h3 class="food-name">Kitfo</h3>
+            <p class="food-desc">Minced raw beef seasoned with mitmita and spices.</p>
+            <p class="food-price">150 birr</p>
+            <button class="add-btn" data-name="Kitfo" data-price="150">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}tibs.jpg" alt="Tibs">
+          <div class="card-body">
+            <h3 class="food-name">Tibs</h3>
+            <p class="food-desc">Stir-fried beef with onions, peppers and spices.</p>
+            <p class="food-price">230 birr</p>
+            <button class="add-btn" data-name="Tibs" data-price="230">Add to Order</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
+          <div class="card-body">
+            <h3 class="food-name">Veggie Combo</h3>
+            <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
+            <p class="food-price">90 birr</p>
+            <button class="add-btn" data-name="Veggie Combo" data-price="90">Add to Order</button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
+          <div class="card-body">
+            <h3 class="food-name">Veggie Combo</h3>
+            <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
+            <p class="food-price">90 birr</p>
+            <button class="add-btn" data-name="Veggie Combo" data-price="90">Add to Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Summary Section -->
+  <section class="order-summary hidden" id="orderSummary">
+    <div class="container">
+      <div class="order-card">
+        <h2 class="menu-title">Order Summary</h2>
+        <p id="clock" class="clock"></p>
+
+        <div class="order-stats">
+          <div class="stat-box">
+            <span class="stat-label">Items</span>
+            <span class="stat-value" id="itemCount">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Total</span>
+            <span class="stat-value"><span id="totalPrice">0</span> ETB</span>
+          </div>
+        </div>
+
+        <ul id="orderList" class="order-list"></ul>
+
+        <p id="orderMessage"></p>
+
+        <button id="submitOrderBtn" class="btn">Submit Order</button>
+        <button id="clearOrderBtn" class="btn clear-btn">Clear Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+
+      <div class="footer-about">
+        <h3>TastyBite</h3>
+        <p>Ethiopian Food, Made with Love</p>
+        <p>We bring the rich and authentic taste of Ethiopia to your table.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="contact" id="contact">
+        <h4>Contact Us</h4>
+        <p>Phone: +251 90 123 4567</p>
+        <p>Email: info@tastybite.et</p>
+        <p>Address: Bahir Dar, Ethiopia</p>
+        <div class="social">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="copyright">&copy;2026 Tasty Bite.</p>
+    <p class="reserve">All rights are reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
