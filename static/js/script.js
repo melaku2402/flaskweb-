@@ -1,7 +1,6 @@
-// Cart state - list of items the customer has added
 let cart = [];
 
-// Grab all the DOM elements we need to work with
+//  DOM 
 const addButtons = document.querySelectorAll('.add-btn');
 const countLabel = document.getElementById('itemCount');
 const totalLabel = document.getElementById('totalPrice');
@@ -16,7 +15,7 @@ const headerBar = document.querySelector('header');
 const submitBtn = document.getElementById('submitOrderBtn');
 const orderMessage = document.getElementById('orderMessage');
 
-// Wire up click handlers for every "add to cart" button on the page
+// 
 addButtons.forEach(button => {
   button.onclick = function () {
     const itemName = this.getAttribute('data-name');
@@ -27,7 +26,7 @@ addButtons.forEach(button => {
   };
 });
 
-// Locate a specific item within the cart by its name
+// Locate
 const findCartItem = name => cart.find(item => item.name === name) || null;
 
 function addItem(name, price) {
@@ -69,7 +68,7 @@ function removeItem(name) {
   updateUI();
 }
 
-// Redraws the order list and refreshes totals/badges
+// 
 function updateUI() {
   listContainer.innerHTML = '';
 
@@ -105,7 +104,7 @@ clearBtn.onclick = () => {
   updateUI();
 };
 
-// Small confirmation popup
+
 function popToast() {
   toast.classList.add('show');
   setTimeout(() => {
@@ -129,7 +128,7 @@ cartBtn.onclick = () => {
   }
 };
 
-// Sticky header on scroll
+
 window.onscroll = () => {
   if (window.scrollY > 80) {
     headerBar.classList.add('sticky');
@@ -140,7 +139,7 @@ window.onscroll = () => {
   }
 };
 
-// async/await and fetch
+// async/await 
 submitBtn.onclick = async () => {
   if (cart.length === 0) {
     orderMessage.textContent = 'add something to your cart first';
