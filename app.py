@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 ORDERS_FILE = 'orders.json'
 
-# menu data, just hardcoded here since we're not allowed to use a database
+# menu data
 menu = [
     {"id": 1, "name": "Doro Wat", "description": "Spicy chicken stew cooked in berbere sauce and butter.", "price": 120, "image": "images/doro.jpg"},
     {"id": 2, "name": "Shiro Wat", "description": "Chickpea stew simmered with spices and berbere.", "price": 100, "image": "images/shiro.jpg"},
