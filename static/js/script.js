@@ -15,6 +15,7 @@ const panel = document.getElementById('orderSummary');
 const headerBar = document.querySelector('header');
 const submitBtn = document.getElementById('submitOrderBtn');
 const orderMessage = document.getElementById('orderMessage');
+const customerInput = document.getElementById('customerName');
 
 // Wire up click handlers for every "add to cart" button on the page
 addButtons.forEach(button => {
@@ -147,13 +148,20 @@ submitBtn.onclick = async () => {
     return;
   }
 
+  const customer = customerInput.value.trim();
+  if (!customer) {
+    orderMessage.textContent = 'please enter your name first';
+    customerInput.focus();
+    return;
+  }
+
   const total = cart.reduce((acc, item) => acc + item.qty * item.price, 0);
 
   try {
     const res = await fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: cart, total })
+      body: JSON.stringify({ customer, items: cart, total })
     });
 
     const data = await res.json();
@@ -163,6 +171,7 @@ submitBtn.onclick = async () => {
     } else {
       orderMessage.textContent = 'order placed, thanks!';
       cart = [];
+      customerInput.value = '';
       updateUI();
     }
   } catch (err) {
