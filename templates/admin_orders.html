@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Orders | TastyBite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <h1>TastyBite</h1>
+        <p>Admin Dashboard</p>
+      </div>
+      <nav class="nav">
+        <a href="{{ url_for('index') }}">Site</a>
+        <a href="{{ url_for('admin_orders') }}" class="active">Orders</a>
+        <a href="{{ url_for('admin_add') }}">Add Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="admin-section">
+    <div class="container">
+      <h2 class="menu-title">All Orders</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% if orders %}
+      <div class="table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Qty</th>
+              <th>Total (ETB)</th>
+              <th>Date / Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td>#{{ order.id }}</td>
+              <td>{{ order.customer }}</td>
+              <td>
+                <ul class="items-list">
+                  {% for item in order.get_items() %}
+                  <li>{{ item.name }} × {{ item.qty }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
+              <td>{{ order.quantity }}</td>
+              <td>{{ order.total_price }}</td>
+              <td>{{ order.date_time.strftime('%Y-%m-%d %H:%M') }}</td>
+              <td>
+                <span class="status-badge status-{{ order.status|lower }}">{{ order.status }}</span>
+              </td>
+              <td class="actions-cell">
+                {% if order.status != 'Cancelled' %}
+                <form method="POST" action="{{ url_for('admin_orders') }}" class="inline-form">
+                  <input type="hidden" name="order_id" value="{{ order.id }}">
+                  <input type="hidden" name="action" value="cancel">
+                  <button type="submit" class="btn btn-small btn-warning">Cancel</button>
+                </form>
+                {% endif %}
+                <form method="POST" action="{{ url_for('admin_orders') }}" class="inline-form" onsubmit="return confirm('Delete order #{{ order.id }}? This cannot be undone.');">
+                  <input type="hidden" name="order_id" value="{{ order.id }}">
+                  <input type="hidden" name="action" value="delete">
+                  <button type="submit" class="btn btn-small btn-danger">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="empty-msg">No orders yet. <a href="{{ url_for('admin_add') }}">Add one</a>.</p>
+      {% endif %}
+    </div>
+  </section>
+
+</body>
+</html>
