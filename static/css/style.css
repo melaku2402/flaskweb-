@@ -327,6 +327,22 @@ header {
   margin-bottom: 15px;
 }
 
+.customer-label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: bold;
+  color: #2e4a24;
+}
+
+.customer-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
 .order-stats {
   display: flex;
   justify-content: center;
