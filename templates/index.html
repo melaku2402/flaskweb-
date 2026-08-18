@@ -20,8 +20,8 @@
       <nav class="nav">
         <a href="#">Home</a>
         <a href="#menu">Menu</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
       </nav>
       <span class="cart-icon" id="cartIcon">🛒<span class="cart-count" id="cartCount">0</span></span>
     </div>
@@ -35,7 +35,6 @@
         <p>Enjoy traditional flavors made from fresh ingredients and time-honored recipes.</p>
         <a href="#menu" class="btn">View Menu</a>
       </div>
-      
     </div>
   </section>
 
@@ -45,9 +44,8 @@
       <h2 class="menu-title">Popular Dishes</h2>
 
       <div class="cards">
-
         <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}doro.jpg" alt="Doro Wat">
+          <img class="card-img" src="{{ url_for('static', filename='images/doro.jpg') }}" alt="Doro Wat">
           <div class="card-body">
             <h3 class="food-name">Doro Wat</h3>
             <p class="food-desc">Spicy chicken stew cooked in berbere sauce and butter.</p>
@@ -57,7 +55,7 @@
         </div>
 
         <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}shiro.jpg" alt="Shiro Wat">
+          <img class="card-img" src="{{ url_for('static', filename='images/shiro.jpg') }}" alt="Shiro Wat">
           <div class="card-body">
             <h3 class="food-name">Shiro Wat</h3>
             <p class="food-desc">Chickpea stew simmered with spices and berbere.</p>
@@ -67,7 +65,7 @@
         </div>
 
         <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}kitfo.jpg" alt="Kitfo">
+          <img class="card-img" src="{{ url_for('static', filename='images/kitfo.jpg') }}" alt="Kitfo">
           <div class="card-body">
             <h3 class="food-name">Kitfo</h3>
             <p class="food-desc">Minced raw beef seasoned with mitmita and spices.</p>
@@ -77,7 +75,7 @@
         </div>
 
         <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}tibs.jpg" alt="Tibs">
+          <img class="card-img" src="{{ url_for('static', filename='images/tibs.jpg') }}" alt="Tibs">
           <div class="card-body">
             <h3 class="food-name">Tibs</h3>
             <p class="food-desc">Stir-fried beef with onions, peppers and spices.</p>
@@ -87,55 +85,7 @@
         </div>
 
         <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
-          <div class="card-body">
-            <h3 class="food-name">Veggie Combo</h3>
-            <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
-            <p class="food-price">90 birr</p>
-            <button class="add-btn" data-name="Veggie Combo" data-price="90">Add to Order</button>
-          </div>
-        </div>
-   <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}shiro.jpg" alt="Shiro Wat">
-          <div class="card-body">
-            <h3 class="food-name">Shiro Wat</h3>
-            <p class="food-desc">Chickpea stew simmered with spices and berbere.</p>
-            <p class="food-price">100 birr</p>
-            <button class="add-btn" data-name="Shiro Wat" data-price="100">Add to Order</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}kitfo.jpg" alt="Kitfo">
-          <div class="card-body">
-            <h3 class="food-name">Kitfo</h3>
-            <p class="food-desc">Minced raw beef seasoned with mitmita and spices.</p>
-            <p class="food-price">150 birr</p>
-            <button class="add-btn" data-name="Kitfo" data-price="150">Add to Order</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}tibs.jpg" alt="Tibs">
-          <div class="card-body">
-            <h3 class="food-name">Tibs</h3>
-            <p class="food-desc">Stir-fried beef with onions, peppers and spices.</p>
-            <p class="food-price">230 birr</p>
-            <button class="add-btn" data-name="Tibs" data-price="230">Add to Order</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
-          <div class="card-body">
-            <h3 class="food-name">Veggie Combo</h3>
-            <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
-            <p class="food-price">90 birr</p>
-            <button class="add-btn" data-name="Veggie Combo" data-price="90">Add to Order</button>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img" src="{{ url_for('static', filename='images/') }}veggie.jpg" alt="Veggie Combo">
+          <img class="card-img" src="{{ url_for('static', filename='images/veggie.jpg') }}" alt="Veggie Combo">
           <div class="card-body">
             <h3 class="food-name">Veggie Combo</h3>
             <p class="food-desc">A combination of our delicious vegetarian dishes.</p>
@@ -153,6 +103,9 @@
       <div class="order-card">
         <h2 class="menu-title">Order Summary</h2>
         <p id="clock" class="clock"></p>
+
+        <label for="customerName" class="customer-label">Your name</label>
+        <input type="text" id="customerName" class="customer-input" placeholder="Enter your name">
 
         <div class="order-stats">
           <div class="stat-box">
@@ -178,7 +131,6 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
-
       <div class="footer-about">
         <h3>TastyBite</h3>
         <p>Ethiopian Food, Made with Love</p>
@@ -204,7 +156,6 @@
           <a href="#">WhatsApp</a>
         </div>
       </div>
-
     </div>
     <p class="copyright">&copy;2026 Tasty Bite.</p>
     <p class="reserve">All rights are reserved.</p>

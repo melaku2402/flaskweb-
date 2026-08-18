@@ -1,0 +1,180 @@
+.nav a.active {
+  color: #a0522d;
+  border-bottom: 2px solid #a0522d;
+}
+
+.admin-section {
+  padding: 40px 0 80px;
+  min-height: 70vh;
+}
+
+.flash {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.flash-success {
+  background-color: #e4f3e1;
+  color: #2e4a24;
+  border: 1px solid #2e4a24;
+}
+
+.flash-error {
+  background-color: #fbe3df;
+  color: #a0322d;
+  border: 1px solid #a0322d;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee0cc;
+  vertical-align: top;
+}
+
+.admin-table thead {
+  background-color: #2e4a24;
+  color: #ffffff;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #faf6ee;
+}
+
+.items-list {
+  list-style: none;
+  font-size: 14px;
+  color: #555;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #7a5c00;
+}
+
+.status-cancelled {
+  background-color: #fbe3df;
+  color: #a0322d;
+}
+
+.status-completed {
+  background-color: #e4f3e1;
+  color: #2e4a24;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.inline-form {
+  display: inline-block;
+}
+
+.btn-small {
+  padding: 7px 14px;
+  font-size: 13px;
+}
+
+.btn-warning {
+  background-color: #c98a1f;
+}
+
+.btn-warning:hover {
+  background-color: #a0522d;
+}
+
+.btn-danger {
+  background-color: #a0322d;
+}
+
+.btn-danger:hover {
+  background-color: #7a1f1c;
+}
+
+.empty-msg {
+  padding: 30px 0;
+  color: #7a6a52;
+}
+
+.empty-msg a {
+  color: #2e4a24;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Admin add-order form */
+.admin-form {
+  max-width: 600px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-form label {
+  font-weight: bold;
+  color: #2e4a24;
+  margin-top: 10px;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="number"],
+.admin-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.item-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.item-row .item-select {
+  flex: 3;
+}
+
+.item-row .item-qty {
+  flex: 1;
+}
+
+.admin-form .btn {
+  align-self: flex-start;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+}
