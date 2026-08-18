@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Add Order | TastyBite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <h1>TastyBite</h1>
+        <p>Admin Dashboard</p>
+      </div>
+      <nav class="nav">
+        <a href="{{ url_for('index') }}">Site</a>
+        <a href="{{ url_for('admin_orders') }}">Orders</a>
+        <a href="{{ url_for('admin_add') }}" class="active">Add Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="admin-section">
+    <div class="container">
+      <h2 class="menu-title">Add a New Order</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" action="{{ url_for('admin_add') }}" class="admin-form" id="addOrderForm">
+        <label for="customer">Customer name</label>
+        <input type="text" id="customer" name="customer" placeholder="e.g. Abebe Kebede" required>
+
+        <label>Food items</label>
+        <div id="itemRows">
+          <div class="item-row">
+            <select name="item_name[]" class="item-select" required>
+              <option value="">-- choose item --</option>
+              {% for m in menu %}
+              <option value="{{ m.name }}" data-price="{{ m.price }}">{{ m.name }} ({{ m.price }} birr)</option>
+              {% endfor %}
+            </select>
+            <input type="number" name="item_qty[]" class="item-qty" min="1" value="1" required>
+            <button type="button" class="btn btn-small remove-row-btn" onclick="removeRow(this)">Remove</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-small" id="addRowBtn">+ Add another item</button>
+
+        <label for="total_price">Total price (ETB)</label>
+        <input type="number" step="0.01" id="total_price" name="total_price" required>
+        <button type="button" class="btn btn-small" id="calcTotalBtn">Auto-calculate total</button>
+
+        <button type="submit" class="btn">Save Order</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    const menuPrices = {
+      {% for m in menu %}"{{ m.name }}": {{ m.price }}{% if not loop.last %},{% endif %}{% endfor %}
+    };
+
+    const itemRows = document.getElementById('itemRows');
+    const addRowBtn = document.getElementById('addRowBtn');
+    const calcTotalBtn = document.getElementById('calcTotalBtn');
+    const totalInput = document.getElementById('total_price');
+
+    function rowTemplate() {
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <select name="item_name[]" class="item-select" required>
+          <option value="">-- choose item --</option>
+          {% for m in menu %}
+          <option value="{{ m.name }}" data-price="{{ m.price }}">{{ m.name }} ({{ m.price }} birr)</option>
+          {% endfor %}
+        </select>
+        <input type="number" name="item_qty[]" class="item-qty" min="1" value="1" required>
+        <button type="button" class="btn btn-small remove-row-btn" onclick="removeRow(this)">Remove</button>
+      `;
+      return row;
+    }
+
+    addRowBtn.onclick = () => {
+      itemRows.appendChild(rowTemplate());
+    };
+
+    function removeRow(btn) {
+      const rows = itemRows.querySelectorAll('.item-row');
+      if (rows.length > 1) {
+        btn.closest('.item-row').remove();
+      }
+    }
+
+    calcTotalBtn.onclick = () => {
+      let total = 0;
+      itemRows.querySelectorAll('.item-row').forEach(row => {
+        const name = row.querySelector('.item-select').value;
+        const qty = Number(row.querySelector('.item-qty').value) || 0;
+        const price = menuPrices[name] || 0;
+        total += price * qty;
+      });
+      totalInput.value = total.toFixed(2);
+    };
+  </script>
+
+</body>
+</html>
